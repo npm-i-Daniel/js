@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo list</title>
+</head>
+<style>
+    body {
+        background-color: white;
+    }
+
+    #container {
+        width: 500px;
+        height: 200px;
+        text-align: center;
+        position: relative;
+        top: 50px;
+        left: 500px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        border: 4px solid black;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+    hr{
+        border: 2px solid black;
+        width: 400px;
+    }
+
+    #content {
+        width: 400px;
+        position: relative;
+        top: 10px;
+        left: 50px;
+    }
+
+    #inputtext {
+        width: 310px;
+        height: 25px;
+        border: 3px solid black;
+        padding: 5px 10px;
+        background-color: transparent;
+    }
+
+    #add {
+        margin-left: 8px;
+        border: 3px solid black;
+        background-color: black;
+        color: white;
+        font-weight: 700;
+        padding: 10px 8px 10px 8px;
+        border-radius: 4px;
+    }
+
+    ol {
+        list-style: none;
+    }
+
+    li {
+        display: flex;
+        justify-content: space-around;
+        position: relative;
+        top: 15px;
+        left: 20px;
+        padding: 20px 30px;
+        display: none;
+        text-align: start;
+    }
+    #removebtn{
+        background-color: transparent;
+        border: none;
+        position: absolute;
+        top: 15px;
+        left: 300px;
+    }
+    #removebtn svg:hover{
+        fill: red;
+    }
+</style>
+
+<body>
+    <div id="container">
+        <h1>To-Do List</h1><hr>
+        <div id="content">
+            <input type="text" name="" id="inputtext" placeholder="Add Task"><button id="add">ADD</button>
+        </div>
+        <ol id="ol">
+
+        </ol>
+    </div>
+    <script>
+        let ol = document.getElementById('ol')
+        let container = document.getElementById('container')
+        let input = document.getElementById('inputtext')
+        document.getElementById("add").addEventListener("click", function () {
+            if (input.value.trim() === '') {
+                return;
+            }
+            let li = document.createElement('li')
+            li.textContent = input.value;
+            li.style.display = "block"
+            container.style.height = "auto"
+            let removebtn = document.createElement('button')
+            removebtn.id = "removebtn"
+            removebtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+        fill="black">
+            <path
+                d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
+        </svg>`
+            removebtn.addEventListener("click",function(){
+                li.remove();
+                container.style.height = "200px";
+            })
+            li.appendChild(removebtn)
+            ol.appendChild(li)
+            input.value = ""
+        })
+    </script>
+</body>
+
+</html>

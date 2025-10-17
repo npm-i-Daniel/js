@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add</title>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <input type="number" name="" id="input1">
+            <span class="add">+</span>
+            <input type="number" name="" id="input2">
+           <button onclick="add()">Calculate</button>
+        </div><br>
+        <div id="result"></div>
+    </div>
+    <script>
+        let input1 = document.getElementById('input1')
+        let input2 = document.getElementById('input2')
+        let result = document.getElementById('result')
+        function add() {
+            let num1 = Number(input1.value)
+            let num2 = Number(input2.value)
+            let calculate = num1 + num2
+            result.textContent = calculate
+        }
+    </script>
+</body>
+
+</html>
